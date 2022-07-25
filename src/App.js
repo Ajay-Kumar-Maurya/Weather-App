@@ -8,6 +8,7 @@ import getFormattedWeatherData from './services/weatherService';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import { Header } from './components/Header';
@@ -79,13 +80,12 @@ function App() {
     // <div className={`bg-gradient-to-br h-fit shadow-xl shadow-gray-400 ${formatBackgroundColor()}`}
 
     // Div tag with style to show background images depending on weather.
-    <div className={`w-full h-full bg-no-repeat bg-cover`} style={formatBackgroundImage()}>
-      <Header />
+    <Router>
+      <div className={`w-full h-full bg-no-repeat bg-cover`} style={formatBackgroundImage()}>
+        <Header />
 
-      {/* <Router>
         <Routes>
-          <Route exact path='/' element={<>
-            <TopButtons setQuery={setQuery} />
+          <Route path='/' element={<><TopButtons setQuery={setQuery} />
             <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
             {weather && (
               <div className='pb-3'>
@@ -94,32 +94,17 @@ function App() {
                 <Forecast title="hourly forecast" items={weather.hourly} />
                 <Forecast title="daily forecast" items={weather.daily} />
               </div>
-            )}
-          </>} />
+            )} </>} />
+          <Route path='/about' element={<About />} />
 
-          <Route exact path='/about' element={} />
         </Routes>
-      </Router> */}
-      
 
-      <TopButtons setQuery={setQuery} />
-      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
+        <Footer />
 
-      {weather && (
-        <div className='pb-3'>
-          <TimeAndLocation weather={weather} />
-          <TemperatureAndDetails weather={weather} units={units} />
-          <Forecast title="hourly forecast" items={weather.hourly} />
-          <Forecast title="daily forecast" items={weather.daily} />
-        </div>
-      )}
+        {/* <ToastContainer autoClose={3000} theme='colored' newestOnTop={true}/> */}
 
-      <Footer />
-
-      {/* <ToastContainer autoClose={3000} theme='colored' newestOnTop={true}/> */}
-
-    </div>
-
+      </div>
+    </Router>
 
   );
 }
