@@ -3,6 +3,10 @@ import React from 'react'
 function TopButtons({setQuery}) {
    const cities = [
       {
+         id : 0,
+         title : 'India',
+      },
+      {
          id : 1,
          title : 'London',
       },

@@ -2,12 +2,15 @@ import React from 'react'
 import { iconUrlFromCode } from '../services/weatherService'
 
 function Forecast({title, items}) {
-  return <div>
+   let myStyle={
+      border: "2px solid #ffffff"
+   }
+  return <div className='mx-6'>
    
       <div className='flex items-center justify-start mt-6'>
          <p className='text-white font-medium uppercase'>{title}</p>
       </div>
-      <hr className='my-2' />
+      <hr className='my-2' style={myStyle}/>
       <div className='flex flex-row items-center justify-between text-white'>
 
          {items.map(item => (
